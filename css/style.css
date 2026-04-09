@@ -4,19 +4,19 @@
 
 /* ---------- CSS Custom Properties ---------- */
 :root {
-  --primary:       #0d2b5e;
-  --primary-light: #1a4799;
-  --accent:        #f97316;
-  --accent-hover:  #ea6c0a;
+  --primary:       #1c3a6b;
+  --primary-light: #2b6cb0;
+  --accent:        #00adef;
+  --accent-hover:  #0099d0;
   --white:         #ffffff;
   --light-bg:      #f3f6fb;
   --text-dark:     #1a1a2e;
   --text-mid:      #4a5568;
   --text-light:    #718096;
   --border:        #e2e8f0;
-  --shadow-sm:     0 2px 8px rgba(13,43,94,.08);
-  --shadow-md:     0 6px 24px rgba(13,43,94,.12);
-  --shadow-lg:     0 16px 48px rgba(13,43,94,.18);
+  --shadow-sm:     0 2px 8px rgba(28,58,107,.08);
+  --shadow-md:     0 6px 24px rgba(28,58,107,.12);
+  --shadow-lg:     0 16px 48px rgba(28,58,107,.18);
   --radius:        10px;
   --radius-lg:     18px;
   --transition:    .3s ease;
@@ -140,13 +140,12 @@ h1, h2, h3, h4, h5 {
   transition: opacity .5s ease, visibility .5s ease;
 }
 .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-.loader-logo {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--white);
+.loader-logo-img {
+  height: 80px;
+  width: auto;
+  border-radius: 12px;
   animation: loaderPulse 1s ease-in-out infinite alternate;
 }
-.loader-logo span { color: var(--accent); }
 @keyframes loaderPulse {
   from { opacity: .4; transform: scale(.96); }
   to   { opacity: 1;  transform: scale(1);   }
@@ -215,8 +214,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .navbar.scrolled .nav-link { color: var(--text-dark); }
-.navbar.scrolled .nav-logo { color: var(--primary); }
-.navbar.scrolled .nav-logo span { color: var(--accent); }
+.navbar.scrolled .logo-img { background: transparent; padding: 2px 0; }
 .navbar.scrolled .btn-nav { background: var(--accent); color: var(--white); }
 
 .nav-inner {
@@ -228,13 +226,18 @@ h1, h2, h3, h4, h5 {
 }
 
 .nav-logo {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--white);
-  letter-spacing: -.02em;
-  transition: color var(--transition);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
-.nav-logo span { color: var(--accent); }
+.logo-img {
+  height: 50px;
+  width: auto;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.92);
+  padding: 5px 10px;
+  transition: background var(--transition), padding var(--transition);
+}
 
 .nav-links {
   display: flex;
@@ -929,13 +932,14 @@ body.dark .hamburger span { background: #f1f5f9; }
 }
 
 .footer-brand .logo {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--white);
-  margin-bottom: 14px;
   display: inline-block;
+  margin-bottom: 14px;
 }
-.footer-brand .logo span { color: var(--accent); }
+.footer-brand .logo img {
+  height: 44px;
+  width: auto;
+  border-radius: 6px;
+}
 
 .footer-brand p {
   font-size: .92rem;
