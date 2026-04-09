@@ -192,8 +192,8 @@ h1, h2, h3, h4, h5 {
 
 .navbar.scrolled .nav-link { color: var(--text-dark); }
 .navbar.scrolled .logo-img {
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.18));
-  height: 70px;
+  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.15));
+  height: 48px;
 }
 .navbar.scrolled .btn-nav { background: var(--accent); color: var(--white); }
 
@@ -201,7 +201,7 @@ h1, h2, h3, h4, h5 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 90px;
+  height: 80px;
   gap: 12px;
 }
 
@@ -216,15 +216,15 @@ h1, h2, h3, h4, h5 {
   to   { opacity: 1; transform: translateX(0); }
 }
 .logo-img {
-  height: 86px;
+  height: 52px;
   width: auto;
-  max-width: 300px;
+  max-width: 220px;
   background: transparent;
   border-radius: 0;
   padding: 0;
   box-shadow: none;
-  /* Drop shadow so logo text/icon pops on dark video */
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.55)) drop-shadow(0 0 16px rgba(0,0,0,0.35));
+  /* Drop shadow so logo pops on dark video */
+  filter: drop-shadow(0 1px 6px rgba(0,0,0,0.5)) drop-shadow(0 0 12px rgba(0,0,0,0.3));
   transition: filter var(--transition), height var(--transition);
 }
 
@@ -1261,12 +1261,12 @@ body.dark .hamburger span { background: #f1f5f9; }
 }
 
 @media (max-width: 768px) {
-  .logo-img { height: 60px; }
-  .nav-inner { height: 76px; }
+  .logo-img { height: 40px; }
+  .nav-inner { height: 68px; }
 }
 
 @media (max-width: 480px) {
-  .logo-img { height: 50px; }
+  .logo-img { height: 34px; }
   .hero h1 { font-size: 1.85rem; }
   .hero p   { font-size: 1rem; }
   .hero-cta { flex-direction: column; }
