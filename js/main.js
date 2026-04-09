@@ -20,21 +20,7 @@
   'use strict';
 
   /* ═══════════════════════════════════════════════════════════
-     1. PAGE LOADER
-  ═══════════════════════════════════════════════════════════ */
-  const loader = document.getElementById('pageLoader');
-  if (loader) {
-    function hideLoader() { loader.classList.add('hidden'); }
-    // Hide as early as possible; CSS animation is the guaranteed fallback
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', hideLoader);
-    } else {
-      hideLoader();
-    }
-  }
-
-  /* ═══════════════════════════════════════════════════════════
-     2. SCROLL PROGRESS BAR
+     1. SCROLL PROGRESS BAR
   ═══════════════════════════════════════════════════════════ */
   const progressBar = document.getElementById('scrollProgress');
   function updateProgress() {

@@ -128,33 +128,6 @@ h1, h2, h3, h4, h5 {
   transform: translateY(-2px);
 }
 
-/* ---------- PAGE LOADER ---------- */
-.page-loader {
-  position: fixed;
-  inset: 0;
-  background: var(--primary);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* Auto-dismiss after 1s purely via CSS — JS is just a speedup */
-  animation: loaderDismiss 0.4s ease 1s forwards;
-}
-.page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-@keyframes loaderDismiss {
-  to { opacity: 0; visibility: hidden; pointer-events: none; }
-}
-.loader-logo-img {
-  height: 80px;
-  width: auto;
-  border-radius: 12px;
-  animation: loaderPulse 1s ease-in-out infinite alternate;
-}
-@keyframes loaderPulse {
-  from { opacity: .4; transform: scale(.96); }
-  to   { opacity: 1;  transform: scale(1);   }
-}
-
 /* ---------- SCROLL PROGRESS BAR ---------- */
 .scroll-progress {
   position: fixed;
