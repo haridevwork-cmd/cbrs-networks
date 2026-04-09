@@ -180,7 +180,8 @@ h1, h2, h3, h4, h5 {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 999;
-  background: transparent;
+  /* Dark gradient fades behind navbar so logo always readable over video */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.0) 100%);
   transition: background var(--transition), box-shadow var(--transition);
   padding: 0;
 }
@@ -192,8 +193,9 @@ h1, h2, h3, h4, h5 {
 
 .navbar.scrolled .nav-link { color: var(--text-dark); }
 .navbar.scrolled .logo-img {
-  filter: brightness(1) drop-shadow(0 1px 3px rgba(0,0,0,0.2));
-  height: 50px;
+  /* On white navbar: restore original colors, just a subtle shadow */
+  filter: none;
+  height: 52px;
 }
 .navbar.scrolled .btn-nav { background: var(--accent); color: var(--white); }
 
@@ -216,21 +218,21 @@ h1, h2, h3, h4, h5 {
   to   { opacity: 1; transform: translateX(0); }
 }
 .logo-img {
-  height: 56px;
+  height: 64px;
   width: auto;
-  max-width: 240px;
+  max-width: 260px;
   background: transparent;
   border-radius: 0;
   padding: 0;
   box-shadow: none;
-  /* White text in logo needs brightening + shadow to pop on dark video */
+  /* Invert dark logo pixels to white for contrast on dark video, then add glow */
   filter:
-    brightness(1.15)
-    drop-shadow(0 1px 8px rgba(0,0,0,0.6))
-    drop-shadow(0 0 20px rgba(0,0,0,0.4));
+    invert(1) brightness(2)
+    drop-shadow(0 0 6px rgba(255,255,255,0.5))
+    drop-shadow(0 2px 12px rgba(0,0,0,0.8));
   transition: filter var(--transition), height var(--transition), opacity var(--transition);
 }
-.logo-img:hover { opacity: 0.88; }
+.logo-img:hover { opacity: 0.85; }
 
 .nav-links {
   display: flex;
@@ -488,8 +490,7 @@ body.dark .hamburger span { background: #f1f5f9; }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(135deg, rgba(13,43,94,.82) 0%, rgba(13,43,94,.55) 50%, rgba(13,43,94,.40) 100%),
-    radial-gradient(ellipse 70% 60% at 80% 50%, rgba(249,115,22,.18) 0%, transparent 65%);
+    linear-gradient(135deg, rgba(10,30,70,.88) 0%, rgba(10,30,70,.65) 50%, rgba(10,30,70,.50) 100%);
   z-index: 1;
 }
 
@@ -1265,12 +1266,12 @@ body.dark .hamburger span { background: #f1f5f9; }
 }
 
 @media (max-width: 768px) {
-  .logo-img { height: 40px; }
+  .logo-img { height: 46px; }
   .nav-inner { height: 68px; }
 }
 
 @media (max-width: 480px) {
-  .logo-img { height: 34px; }
+  .logo-img { height: 38px; }
   .hero h1 { font-size: 1.85rem; }
   .hero p   { font-size: 1rem; }
   .hero-cta { flex-direction: column; }
