@@ -330,17 +330,6 @@ h1, h2, h3, h4, h5 {
   }
   .nav-links.open { transform: translateX(0); }
 
-  /* SVG nav icons: hidden on desktop, shown in mobile drawer */
-  .nav-icon {
-    display: none;
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-    stroke: var(--accent);
-  }
-
-  .nav-links .nav-link::before { display: none; }
-
   .nav-links .nav-link {
     color: var(--text-dark);
     font-size: 1.05rem;
@@ -348,11 +337,14 @@ h1, h2, h3, h4, h5 {
     border-bottom: 1px solid var(--border);
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 10px;
   }
-  .nav-links .nav-link .nav-icon { display: block; }
-  .nav-links .nav-link:hover .nav-icon,
-  .nav-links .nav-link.active .nav-icon { stroke: var(--accent); }
+  .nav-links .nav-link::before { font-size: 1.1rem; }
+  .nav-links li:nth-child(1) .nav-link::before { content: '🏠'; }
+  .nav-links li:nth-child(2) .nav-link::before { content: '👥'; }
+  .nav-links li:nth-child(3) .nav-link::before { content: '🛠️'; }
+  .nav-links li:nth-child(4) .nav-link::before { content: '💼'; }
+  .nav-links li:nth-child(5) .nav-link::before { content: '📞'; }
   .nav-links .nav-link:hover,
   .nav-links .nav-link.active { color: var(--accent); background: rgba(249,115,22,.06); }
   .nav-links .nav-link::after { display: none; }
