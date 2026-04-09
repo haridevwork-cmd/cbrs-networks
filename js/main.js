@@ -24,11 +24,15 @@
   ═══════════════════════════════════════════════════════════ */
   const loader = document.getElementById('pageLoader');
   if (loader) {
-    window.addEventListener('load', function () {
-      setTimeout(function () { loader.classList.add('hidden'); }, 300);
-    });
-    // Safety fallback
-    setTimeout(function () { if (loader) loader.classList.add('hidden'); }, 2500);
+    function hideLoader() { loader.classList.add('hidden'); }
+    // Use DOMContentLoaded — do NOT wait for video/images to finish downloading
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () { setTimeout(hideLoader, 400); });
+    } else {
+      setTimeout(hideLoader, 400);
+    }
+    // Absolute hard fallback — hide no matter what after 1s
+    setTimeout(hideLoader, 1000);
   }
 
   /* ═══════════════════════════════════════════════════════════
