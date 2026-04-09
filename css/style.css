@@ -192,8 +192,8 @@ h1, h2, h3, h4, h5 {
 
 .navbar.scrolled .nav-link { color: var(--text-dark); }
 .navbar.scrolled .logo-img {
-  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.15));
-  height: 48px;
+  filter: brightness(1) drop-shadow(0 1px 3px rgba(0,0,0,0.2));
+  height: 50px;
 }
 .navbar.scrolled .btn-nav { background: var(--accent); color: var(--white); }
 
@@ -216,17 +216,21 @@ h1, h2, h3, h4, h5 {
   to   { opacity: 1; transform: translateX(0); }
 }
 .logo-img {
-  height: 52px;
+  height: 56px;
   width: auto;
-  max-width: 220px;
+  max-width: 240px;
   background: transparent;
   border-radius: 0;
   padding: 0;
   box-shadow: none;
-  /* Drop shadow so logo pops on dark video */
-  filter: drop-shadow(0 1px 6px rgba(0,0,0,0.5)) drop-shadow(0 0 12px rgba(0,0,0,0.3));
-  transition: filter var(--transition), height var(--transition);
+  /* White text in logo needs brightening + shadow to pop on dark video */
+  filter:
+    brightness(1.15)
+    drop-shadow(0 1px 8px rgba(0,0,0,0.6))
+    drop-shadow(0 0 20px rgba(0,0,0,0.4));
+  transition: filter var(--transition), height var(--transition), opacity var(--transition);
 }
+.logo-img:hover { opacity: 0.88; }
 
 .nav-links {
   display: flex;
