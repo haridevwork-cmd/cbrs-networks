@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Listings – CBRS Networks | Find Your Next Career</title>
+  <meta name="description" content="Browse hundreds of open positions across IT, Healthcare, Finance, and Engineering with CBRS Networks. Your next career move starts here." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .jobs-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .jobs-sidebar {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      position: sticky;
+      top: 100px;
+    }
+
+    .sidebar-section { margin-bottom: 28px; }
+    .sidebar-section h4 {
+      font-size: .88rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      margin-bottom: 14px;
+    }
+
+    .sidebar-check {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-size: .92rem;
+      color: var(--text-dark);
+    }
+    .sidebar-check input[type="checkbox"] {
+      width: 16px; height: 16px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .search-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .search-bar input {
+      flex: 1;
+      min-width: 200px;
+      padding: 13px 20px;
+      border: 1.5px solid var(--border);
+      border-radius: 50px;
+      font-size: .95rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color var(--transition);
+    }
+    .search-bar input:focus { border-color: var(--primary-light); }
+    .search-bar button {
+      padding: 13px 28px;
+      border-radius: 50px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      font-weight: 600;
+      font-size: .95rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .search-bar button:hover { background: var(--accent-hover); }
+
+    .jobs-count {
+      font-size: .95rem;
+      color: var(--text-mid);
+      margin-bottom: 20px;
+    }
+    .jobs-count strong { color: var(--primary); }
+
+    .job-apply-btn {
+      padding: 10px 24px;
+      border-radius: 50px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      font-weight: 600;
+      font-size: .88rem;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .job-apply-btn:hover { background: var(--accent-hover); box-shadow: var(--shadow-sm); }
+
+    .job-featured { border-left: 4px solid var(--accent); }
+
+    .featured-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: rgba(249,115,22,.1);
+      padding: 3px 10px;
+      border-radius: 50px;
+      margin-bottom: 8px;
+    }
+
+    .apply-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .apply-modal-overlay.open { display: flex; }
+
+    .apply-modal {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 48px 44px;
+      max-width: 560px;
+      width: 100%;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px; right: 20px;
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: var(--text-mid);
+      line-height: 1;
+    }
+    .modal-close:hover { color: var(--text-dark); }
+
+    .pagination {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .pag-btn {
+      width: 40px; height: 40px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      color: var(--text-mid);
+    }
+    .pag-btn:hover, .pag-btn.active {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: white;
+    }
+
+    @media (max-width: 900px) {
+      .jobs-layout { grid-template-columns: 1fr; }
+      .jobs-sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">CBRS<span>.</span>Networks</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html"    class="nav-link">Home</a></li>
+        <li><a href="about.html"    class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="jobs.html"     class="nav-link active">Jobs</a></li>
+        <li><a href="contact.html"  class="nav-link">Contact</a></li>
+        <li><a href="contact.html"  class="btn-nav">Get Started</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span><span>Job Listings</span>
+      </div>
+      <h1>Find Your Next Opportunity</h1>
+      <p>Browse hundreds of active openings across IT, Healthcare, Finance, Engineering, and more. Your next career move starts here.</p>
+    </div>
+  </section>
+
+  <!-- ===== JOBS SECTION ===== -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <input type="text" id="jobSearch" placeholder="&#128269;  Job title, keyword, or company..." aria-label="Search jobs" />
+        <input type="text" placeholder="&#128205;  Location or Remote..." style="flex:.6;min-width:160px;padding:13px 20px;border:1.5px solid var(--border);border-radius:50px;font-size:.95rem;font-family:inherit;outline:none;" />
+        <button type="button" onclick="filterJobs()">Search Jobs</button>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="jobs-filter" id="filterTabs">
+        <button class="filter-btn active" onclick="filterByCategory(this,'all')">All Categories</button>
+        <button class="filter-btn" onclick="filterByCategory(this,'it')">&#128187; IT &amp; Tech</button>
+        <button class="filter-btn" onclick="filterByCategory(this,'healthcare')">&#127973; Healthcare</button>
+        <button class="filter-btn" onclick="filterByCategory(this,'finance')">&#128200; Finance</button>
+        <button class="filter-btn" onclick="filterByCategory(this,'engineering')">&#9881; Engineering</button>
+        <button class="filter-btn" onclick="filterByCategory(this,'executive')">&#128101; Executive</button>
+      </div>
+
+      <div class="jobs-layout">
+
+        <!-- Sidebar -->
+        <aside class="jobs-sidebar">
+          <div class="sidebar-section">
+            <h4>Job Type</h4>
+            <label class="sidebar-check"><input type="checkbox" checked /> Full-Time</label>
+            <label class="sidebar-check"><input type="checkbox" checked /> Contract</label>
+            <label class="sidebar-check"><input type="checkbox" /> Contract-to-Hire</label>
+            <label class="sidebar-check"><input type="checkbox" /> Part-Time</label>
+          </div>
+          <div class="sidebar-section">
+            <h4>Work Location</h4>
+            <label class="sidebar-check"><input type="checkbox" checked /> Remote</label>
+            <label class="sidebar-check"><input type="checkbox" checked /> Hybrid</label>
+            <label class="sidebar-check"><input type="checkbox" /> On-Site</label>
+          </div>
+          <div class="sidebar-section">
+            <h4>Experience Level</h4>
+            <label class="sidebar-check"><input type="checkbox" /> Entry Level (0–2 yrs)</label>
+            <label class="sidebar-check"><input type="checkbox" checked /> Mid-Level (3–6 yrs)</label>
+            <label class="sidebar-check"><input type="checkbox" checked /> Senior (7+ yrs)</label>
+            <label class="sidebar-check"><input type="checkbox" /> Executive</label>
+          </div>
+          <div class="sidebar-section">
+            <h4>Salary Range</h4>
+            <label class="sidebar-check"><input type="checkbox" /> Under $60K</label>
+            <label class="sidebar-check"><input type="checkbox" checked /> $60K – $100K</label>
+            <label class="sidebar-check"><input type="checkbox" checked /> $100K – $150K</label>
+            <label class="sidebar-check"><input type="checkbox" /> $150K+</label>
+          </div>
+          <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px;">&#128100; Submit Your Resume</a>
+        </aside>
+
+        <!-- Job Listings -->
+        <div>
+          <p class="jobs-count" id="jobsCount">Showing <strong>12</strong> open positions</p>
+
+          <div class="jobs-list" id="jobsList">
+
+            <!-- Job 1 -->
+            <div class="job-card job-featured" data-category="it">
+              <div class="job-info">
+                <div class="featured-badge">&#11088; Featured</div>
+                <h3>Senior Full Stack Engineer</h3>
+                <div class="job-meta">
+                  <span class="job-tag">&#128205; Atlanta, GA (Remote)</span>
+                  <span class="job-tag type">Full-Time</span>
+                  <span class="job-tag salary">$130K – $160K</span>
+                  <span class="job-tag">&#128188; TechCorp Inc.</span>
+                </div>
+              </div>
+              <button class="job-apply-btn" onclick="openApplyModal('Senior Full Stack Engineer')">Apply Now</button>
+            </div>
+
+            <!-- Job 2 -->
+            <div class="job-card" data-category="healthcare">
+              <div class="job-info">
+                <h3>Registered Nurse – ICU</h3>
+                <div class="job-meta">
+                  <span class="job-tag">&#128205; Nashville, TN</span>
+                  <span class="job-tag type">Contract</span>
+                  <span class="job-tag salary">$85 – $95/hr</span>
+                  <span class="job-tag">&#128188; HealthFirst Network</span>
+                </div>
+              </div>
+              <button class="job-apply-btn" onclick="openApplyModal('Registered Nurse – ICU')">Apply Now</button>
+            </div>
+
+            <!-- Job 3 -->
+            <div class="job-card" data-category="finance">
+              <div class="job-info">
+                <h3>Senior Financial Analyst</h3>
+                <div class="job-meta">
+                  <span class="job-tag">&#128205; New York, NY (Hybrid)</span>
+                  <span class="job-tag type">Full-Time</span>
+                  <span class="job-tag salary">$110K – $135K</span>
+                  <span class="job-tag">&#128188; Nexus Financial</span>
+                </div>
+              </div>
+              <button class="job-apply-btn" onclick="openApplyModal('Senior Financial Analyst')">Apply Now</button>
+            </div>
+
+            <!-- Job 4 -->
+            <div class="job-card job-featured" data-category="it">
+              <div class="job-info">
+                <div class="featured-badge">&#11088; Featured</div>
+                <h3>Cloud Solutions Architect (AWS)</h3>
+                <div class="job-meta">
+                  <span class="job-tag">&#128205; Remote – USA</span>
+                  <span class="job-tag type">Contract-to-Hire</span>
+                  <span class="job-tag salary">$140K – $175K</span>
+                  <span class="job-tag">&#128188; Meridian Systems</span>
+                </div>
+              </div>
+              <button class="job-apply-btn" onclick="openApplyModal('Cloud Solutions Architect (AWS)')">Apply Now</button>
+            </div>
+
+            <!-- Job 5 -->
+            <div class="job-card" data-category="engineering">
+              <div class="job-info">
+                <h3>Civil Engineer – Transportation</h3>
+                <div class="job-meta">
+                  <span class="job-tag">&#128205; Dallas, TX</span>
+                  <span class="job-tag type">Full-Time</span>
+                  <span class="job-tag salary">$90K – $115K</span>
+                  <span class="job-tag">&#128188; BuildRight Group</span>
+                </div>
+              </div>
+              <button class="job-apply-btn" onclick="openApplyModal('Civil Engineer – Transportation')">Apply Now</button>
+            </div>
+
+            <!-- Job 6 -->
+            <div class="job-card" data-category="it">
+              <div class="job-info">
+                <h3>Cybersecurity Engineer</h3>
+                <div class="job-meta">
+                  <span class="job-tag">&#128205; Chicago, IL (Hybrid)</span>
+                  <span class="job-tag type">Full-Time</span>
+                  <span class="job-tag salary">$125K – $155K</span>
+                  <span class="job-tag">&#128188; SecureNet Corp</span>
+                </div>
+              </div>
+              <button class="job-apply-btn" onclick="openApplyModal('Cybersecurity Engineer')">Apply Now</button>
+            </div>
+
+            <!-- Job 7 -->
+            <div class="job-card" data-category="healthcare">
+              <div class="job-info">
+                <h3>Physical Therapist (PT)</h3>
+                <div class="job-meta">
+                  <span class="job-tag">&#128205; Phoenix, AZ</span>
+                  <span class="job-tag type">Contract</span>
+                  <span class="job-tag salary">$72 – $85/hr</span>
+                  <span class="job-tag">&#128188; SunHealth Rehab</span>
+                </div>
+              </div>
+              <button class="job-apply-btn" onclick="openApplyModal('Physical Therapist (PT)')">Apply Now</button>
+            </div>
+
+            <!-- Job 8 -->
+            <div class="job-card" data-category="executive">
+              <div class="job-info">
+                <h3>Chief Technology Officer (CTO)</h3>
+                <div class="job-meta">
+                  <span class="job-tag">&#128205; San Francisco, CA</span>
+                  <span class="job-tag type">Full-Time</span>
+                  <span class="job-tag salary">$250K – $320K + Equity</span>
+                  <span class="job-tag">&#128188; FinovaTech Startup</span>
+                </div>
+              </div>
+              <button class="job-apply-btn" onclick="openApplyModal('Chief Technology Officer (CTO)')">Apply Now</button>
+            </div>
+
+            <!-- Job 9 -->
+            <div class="job-card" data-category="it">
+              <div class="job-info">
+                <h3>Data Engineer – Python/Spark</h3>
+                <div class="job-meta">
+                  <span class="job-tag">&#128205; Remote – USA</span>
+                  <span class="job-tag type">Contract</span>
+                  <span class="job-tag salary">$85 – $105/hr</span>
+                  <span class="job-tag">&#128188; DataFlow Analytics</span>
+                </div>
+              </div>
+              <button class="job-apply-btn" onclick="openApplyModal('Data Engineer – Python/Spark')">Apply Now</button>
+            </div>
+
+            <!-- Job 10 -->
+            <div class="job-card" data-category="finance">
+              <div class="job-info">
+                <h3>Controller – Real Estate</h3>
+                <div class="job-meta">
+                  <span class="job-tag">&#128205; Miami, FL</span>
+                  <span class="job-tag type">Full-Time</span>
+                  <span class="job-tag salary">$120K – $145K</span>
+                  <span class="job-tag">&#128188; Pinnacle Properties</span>
+                </div>
+              </div>
+              <button class="job-apply-btn" onclick="openApplyModal('Controller – Real Estate')">Apply Now</button>
+            </div>
+
+            <!-- Job 11 -->
+            <div class="job-card" data-category="engineering">
+              <div class="job-info">
+                <h3>Mechanical Engineer – Aerospace</h3>
+                <div class="job-meta">
+                  <span class="job-tag">&#128205; Huntsville, AL</span>
+                  <span class="job-tag type">Full-Time</span>
+                  <span class="job-tag salary">$105K – $130K</span>
+                  <span class="job-tag">&#128188; AeroTech Defense</span>
+                </div>
+              </div>
+              <button class="job-apply-btn" onclick="openApplyModal('Mechanical Engineer – Aerospace')">Apply Now</button>
+            </div>
+
+            <!-- Job 12 -->
+            <div class="job-card" data-category="healthcare">
+              <div class="job-info">
+                <h3>Epic EHR Implementation Consultant</h3>
+                <div class="job-meta">
+                  <span class="job-tag">&#128205; Remote – USA</span>
+                  <span class="job-tag type">Contract</span>
+                  <span class="job-tag salary">$95 – $120/hr</span>
+                  <span class="job-tag">&#128188; Regional Health System</span>
+                </div>
+              </div>
+              <button class="job-apply-btn" onclick="openApplyModal('Epic EHR Implementation Consultant')">Apply Now</button>
+            </div>
+
+          </div>
+
+          <!-- Pagination -->
+          <div class="pagination">
+            <button class="pag-btn active">1</button>
+            <button class="pag-btn">2</button>
+            <button class="pag-btn">3</button>
+            <button class="pag-btn">&#8250;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Don't See the Right Role Yet?</h2>
+      <p>Submit your resume and our recruiting team will proactively match you with opportunities as they become available.</p>
+      <div class="cta-banner-btns">
+        <a href="contact.html" class="btn btn-primary">&#128100; Submit Your Resume</a>
+        <a href="contact.html" class="btn btn-outline">&#128222; Talk to a Recruiter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">CBRS<span>.</span>Networks</a>
+          <p>A premier staffing and recruiting firm dedicated to connecting exceptional talent with outstanding organizations. Serving clients and candidates nationally since 2010.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+            <a href="#" class="social-link" aria-label="Twitter">&#120143;</a>
+            <a href="#" class="social-link" aria-label="Facebook">f</a>
+            <a href="#" class="social-link" aria-label="Instagram">&#128247;</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">&#8250; Home</a></li>
+            <li><a href="about.html">&#8250; About Us</a></li>
+            <li><a href="services.html">&#8250; Services</a></li>
+            <li><a href="jobs.html">&#8250; Job Listings</a></li>
+            <li><a href="contact.html">&#8250; Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">&#8250; IT Staffing</a></li>
+            <li><a href="services.html">&#8250; Healthcare Recruiting</a></li>
+            <li><a href="services.html">&#8250; Finance &amp; Accounting</a></li>
+            <li><a href="services.html">&#8250; Engineering</a></li>
+            <li><a href="services.html">&#8250; Executive Search</a></li>
+            <li><a href="services.html">&#8250; RPO Solutions</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item"><span class="ico">&#128205;</span><span>1234 Business Pkwy,<br>Suite 500, Atlanta, GA 30301</span></div>
+          <div class="footer-contact-item"><span class="ico">&#128222;</span><span>+1 (800) 555-CBRS</span></div>
+          <div class="footer-contact-item"><span class="ico">&#128140;</span><span>info@cbrsnetworks.com</span></div>
+          <div class="footer-contact-item"><span class="ico">&#128336;</span><span>Mon – Fri: 8 AM – 6 PM EST</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 CBRS Networks. All rights reserved.</span>
+        <span><a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== APPLY MODAL ===== -->
+  <div class="apply-modal-overlay" id="applyModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="apply-modal">
+      <button class="modal-close" onclick="closeApplyModal()" aria-label="Close modal">&times;</button>
+      <h3 id="modalTitle" style="margin-bottom:6px;">Apply for Position</h3>
+      <p id="modalJob" style="color:var(--accent);font-weight:600;margin-bottom:24px;"></p>
+      <form id="applyForm" onsubmit="submitApplication(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="aFirstName">First Name *</label>
+            <input type="text" id="aFirstName" required placeholder="John" />
+          </div>
+          <div class="form-group">
+            <label for="aLastName">Last Name *</label>
+            <input type="text" id="aLastName" required placeholder="Doe" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="aEmail">Email Address *</label>
+          <input type="email" id="aEmail" required placeholder="john.doe@email.com" />
+        </div>
+        <div class="form-group">
+          <label for="aPhone">Phone Number</label>
+          <input type="tel" id="aPhone" placeholder="+1 (555) 000-0000" />
+        </div>
+        <div class="form-group">
+          <label for="aLinkedIn">LinkedIn Profile URL</label>
+          <input type="url" id="aLinkedIn" placeholder="https://linkedin.com/in/yourprofile" />
+        </div>
+        <div class="form-group">
+          <label for="aCoverLetter">Cover Letter / Message</label>
+          <textarea id="aCoverLetter" placeholder="Tell us about yourself and why you're a great fit for this role..." rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">&#128228; Submit Application</button>
+      </form>
+    </div>
+  </div>
+
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8679;</button>
+  <script src="js/main.js"></script>
+  <script>
+    function filterByCategory(btn, category) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cards = document.querySelectorAll('.job-card');
+      let count = 0;
+      cards.forEach(card => {
+        const show = category === 'all' || card.dataset.category === category;
+        card.style.display = show ? 'flex' : 'none';
+        if (show) count++;
+      });
+      document.getElementById('jobsCount').innerHTML = 'Showing <strong>' + count + '</strong> open positions';
+    }
+
+    function filterJobs() {
+      const val = document.getElementById('jobSearch').value.toLowerCase();
+      const cards = document.querySelectorAll('.job-card');
+      let count = 0;
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        const show = text.includes(val);
+        card.style.display = show ? 'flex' : 'none';
+        if (show) count++;
+      });
+      document.getElementById('jobsCount').innerHTML = 'Showing <strong>' + count + '</strong> open positions';
+    }
+
+    function openApplyModal(jobTitle) {
+      document.getElementById('modalJob').textContent = jobTitle;
+      document.getElementById('applyModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeApplyModal() {
+      document.getElementById('applyModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function submitApplication(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.textContent = '&#10003; Application Submitted!';
+      btn.style.background = '#059669';
+      setTimeout(() => { closeApplyModal(); e.target.reset(); btn.innerHTML = '&#128228; Submit Application'; btn.style.background = ''; }, 2000);
+    }
+
+    document.getElementById('applyModal').addEventListener('click', function(e) {
+      if (e.target === this) closeApplyModal();
+    });
+
+    document.getElementById('jobSearch').addEventListener('keyup', function(e) {
+      if (e.key === 'Enter') filterJobs();
+    });
+  </script>
+</body>
+</html>

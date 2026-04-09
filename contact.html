@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us – CBRS Networks | Staffing & Recruiting</title>
+  <meta name="description" content="Get in touch with CBRS Networks for staffing solutions, recruiting assistance, or to submit your resume. We respond within 48 hours." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .offices-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .office-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: var(--transition);
+    }
+    .office-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--primary-light); }
+    .office-card h4 { font-size: 1rem; margin-bottom: 8px; }
+    .office-card p  { font-size: .9rem; color: var(--text-mid); }
+    .office-icon { font-size: 1.8rem; margin-bottom: 12px; }
+
+    .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 16px; }
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      padding: 20px 24px;
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-family: inherit;
+      transition: background var(--transition);
+    }
+    .faq-question:hover { background: var(--light-bg); }
+    .faq-arrow { font-size: 1.2rem; transition: transform var(--transition); flex-shrink: 0; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; }
+    .faq-answer p {
+      padding: 0 24px 20px;
+      font-size: .95rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+    }
+
+    .success-message {
+      display: none;
+      background: #ecfdf5;
+      border: 1.5px solid #6ee7b7;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      color: #065f46;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">CBRS<span>.</span>Networks</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html"    class="nav-link">Home</a></li>
+        <li><a href="about.html"    class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="jobs.html"     class="nav-link">Jobs</a></li>
+        <li><a href="contact.html"  class="nav-link active">Contact</a></li>
+        <li><a href="contact.html"  class="btn-nav">Get Started</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span><span>Contact Us</span>
+      </div>
+      <h1>Let's Work Together</h1>
+      <p>Whether you're a company looking to hire or a professional seeking your next opportunity — our team is ready to help you succeed.</p>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT MAIN ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Info Side -->
+        <div>
+          <div class="contact-info-card">
+            <h3>Get in Touch</h3>
+            <p>We respond to all inquiries within one business day. Reach us by phone, email, or fill out the form — we'd love to hear from you.</p>
+
+            <div class="contact-detail">
+              <div class="ico">&#128205;</div>
+              <div>
+                <h4>Headquarters</h4>
+                <p>1234 Business Pkwy, Suite 500<br>Atlanta, GA 30301</p>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="ico">&#128222;</div>
+              <div>
+                <h4>Phone</h4>
+                <p>+1 (800) 555-CBRS (2277)<br>Mon – Fri, 8 AM – 6 PM EST</p>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="ico">&#128140;</div>
+              <div>
+                <h4>Email</h4>
+                <p>info@cbrsnetworks.com<br>recruiting@cbrsnetworks.com</p>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="ico">&#128100;</div>
+              <div>
+                <h4>For Candidates</h4>
+                <p>Submit your resume at<br>careers@cbrsnetworks.com</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social -->
+          <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-top:20px;">
+            <h4 style="margin-bottom:16px;font-size:1rem;">Follow Us</h4>
+            <div class="social-links">
+              <a href="#" class="social-link" style="background:var(--light-bg);color:var(--primary);" aria-label="LinkedIn">in</a>
+              <a href="#" class="social-link" style="background:var(--light-bg);color:var(--primary);" aria-label="Twitter">&#120143;</a>
+              <a href="#" class="social-link" style="background:var(--light-bg);color:var(--primary);" aria-label="Facebook">f</a>
+              <a href="#" class="social-link" style="background:var(--light-bg);color:var(--primary);" aria-label="Instagram">&#128247;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Side -->
+        <div class="contact-form">
+          <h3>Send Us a Message</h3>
+          <p>Fill out the form and a member of our team will reach out within one business day.</p>
+          <form id="contactForm" onsubmit="handleContact(event)" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" required placeholder="John" autocomplete="given-name" />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" required placeholder="Doe" autocomplete="family-name" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" required placeholder="john.doe@company.com" autocomplete="email" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel" />
+              </div>
+              <div class="form-group">
+                <label for="company">Company Name</label>
+                <input type="text" id="company" name="company" placeholder="Your Company" autocomplete="organization" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inquiryType">Inquiry Type *</label>
+              <select id="inquiryType" name="inquiryType" required>
+                <option value="" disabled selected>Select an option...</option>
+                <option value="hire">I'm looking to hire talent</option>
+                <option value="job">I'm looking for a job</option>
+                <option value="rpo">I'm interested in RPO solutions</option>
+                <option value="executive">I need executive search services</option>
+                <option value="partnership">Partnership / Vendor inquiry</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" required placeholder="Tell us about your staffing needs, the role you're looking for, or how we can help you..." rows="5"></textarea>
+            </div>
+            <div style="margin-bottom:20px;">
+              <label class="sidebar-check" style="font-size:.9rem;color:var(--text-mid);">
+                <input type="checkbox" id="consent" required />
+                I agree to be contacted by CBRS Networks regarding my inquiry. *
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;" id="submitBtn">
+              &#128228; Send Message
+            </button>
+            <div class="success-message" id="successMsg">
+              &#10003; &nbsp; Thank you! Your message has been received. We'll be in touch within one business day.
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OFFICE LOCATIONS ===== -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tag">Our Offices</span>
+        <h2 class="section-title">Locations Nationwide</h2>
+        <p class="section-subtitle">With 8 offices across the United States, we're close to wherever you are and ready to serve your local market.</p>
+      </div>
+      <div class="offices-grid">
+        <div class="office-card">
+          <div class="office-icon">&#127968;</div>
+          <h4>Atlanta, GA <span style="color:var(--accent);font-size:.8rem;">(HQ)</span></h4>
+          <p>1234 Business Pkwy<br>Suite 500, 30301<br>+1 (404) 555-0100</p>
+        </div>
+        <div class="office-card">
+          <div class="office-icon">&#127968;</div>
+          <h4>New York, NY</h4>
+          <p>350 Fifth Avenue<br>Suite 2200, 10118<br>+1 (212) 555-0200</p>
+        </div>
+        <div class="office-card">
+          <div class="office-icon">&#127968;</div>
+          <h4>Chicago, IL</h4>
+          <p>875 N Michigan Ave<br>Suite 3100, 60611<br>+1 (312) 555-0300</p>
+        </div>
+        <div class="office-card">
+          <div class="office-icon">&#127968;</div>
+          <h4>Dallas, TX</h4>
+          <p>2200 Ross Avenue<br>Suite 1700, 75201<br>+1 (214) 555-0400</p>
+        </div>
+        <div class="office-card">
+          <div class="office-icon">&#127968;</div>
+          <h4>Nashville, TN</h4>
+          <p>150 4th Ave N<br>Suite 2000, 37219<br>+1 (615) 555-0500</p>
+        </div>
+        <div class="office-card">
+          <div class="office-icon">&#127968;</div>
+          <h4>Phoenix, AZ</h4>
+          <p>2355 E Camelback Rd<br>Suite 600, 85016<br>+1 (602) 555-0600</p>
+        </div>
+        <div class="office-card">
+          <div class="office-icon">&#127968;</div>
+          <h4>Miami, FL</h4>
+          <p>801 Brickell Ave<br>Suite 900, 33131<br>+1 (305) 555-0700</p>
+        </div>
+        <div class="office-card">
+          <div class="office-icon">&#127968;</div>
+          <h4>San Francisco, CA</h4>
+          <p>100 First Street<br>Suite 2500, 94105<br>+1 (415) 555-0800</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MAP PLACEHOLDER ===== -->
+  <div style="background:var(--light-bg);height:340px;display:flex;align-items:center;justify-content:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div style="text-align:center;">
+      <div style="font-size:4rem;margin-bottom:12px;">&#128506;</div>
+      <p style="color:var(--text-mid);font-weight:600;">Interactive Map Coming Soon</p>
+      <p style="color:var(--text-light);font-size:.9rem;">Embed Google Maps here with your office locations</p>
+    </div>
+  </div>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section">
+    <div class="container" style="max-width:820px;">
+      <div class="text-center">
+        <span class="section-tag">Common Questions</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How quickly can you fill an open position?
+            <span class="faq-arrow">&#8964;</span>
+          </button>
+          <div class="faq-answer">
+            <p>For most roles, we present qualified candidates within 48–72 hours of receiving a job order. For highly specialized or executive-level searches, timelines may extend to 2–3 weeks to ensure we surface the very best talent. We'll always give you a realistic timeline at kickoff.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Do you charge candidates a fee to find them a job?
+            <span class="faq-arrow">&#8964;</span>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely not. Our services are 100% free for candidates. We are compensated by our client companies when a successful placement is made. You should never pay a recruiter to find you a job.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What is your placement guarantee?
+            <span class="faq-arrow">&#8964;</span>
+          </button>
+          <div class="faq-answer">
+            <p>For direct hire placements, we offer a 90-day replacement guarantee. If your new hire doesn't work out within 90 days for any performance-related reason, we will re-recruit for the position at no additional cost. Contract placements come with a 40-hour quality guarantee.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What industries do you specialize in?
+            <span class="faq-arrow">&#8964;</span>
+          </button>
+          <div class="faq-answer">
+            <p>We specialize in IT &amp; Technology, Healthcare, Finance &amp; Accounting, Engineering &amp; Manufacturing, Legal, and Executive Leadership. Our specialist recruiters have real-world experience in these fields and understand your technical requirements inside and out.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How do I submit my resume as a candidate?
+            <span class="faq-arrow">&#8964;</span>
+          </button>
+          <div class="faq-answer">
+            <p>You can apply directly to any of our open positions on our Jobs page, or email your resume to careers@cbrsnetworks.com with your target role, desired compensation, and location preferences. A recruiter will reach out if there's a match with current or upcoming opportunities.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Do you offer remote recruiting services?
+            <span class="faq-arrow">&#8964;</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes! We place remote, hybrid, and on-site talent nationally. Our technology-enabled recruiting process allows us to source and vet candidates regardless of geography, and we have active talent pools in all 50 states.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">CBRS<span>.</span>Networks</a>
+          <p>A premier staffing and recruiting firm dedicated to connecting exceptional talent with outstanding organizations. Serving clients and candidates nationally since 2010.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+            <a href="#" class="social-link" aria-label="Twitter">&#120143;</a>
+            <a href="#" class="social-link" aria-label="Facebook">f</a>
+            <a href="#" class="social-link" aria-label="Instagram">&#128247;</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">&#8250; Home</a></li>
+            <li><a href="about.html">&#8250; About Us</a></li>
+            <li><a href="services.html">&#8250; Services</a></li>
+            <li><a href="jobs.html">&#8250; Job Listings</a></li>
+            <li><a href="contact.html">&#8250; Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">&#8250; IT Staffing</a></li>
+            <li><a href="services.html">&#8250; Healthcare Recruiting</a></li>
+            <li><a href="services.html">&#8250; Finance &amp; Accounting</a></li>
+            <li><a href="services.html">&#8250; Engineering</a></li>
+            <li><a href="services.html">&#8250; Executive Search</a></li>
+            <li><a href="services.html">&#8250; RPO Solutions</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item"><span class="ico">&#128205;</span><span>1234 Business Pkwy,<br>Suite 500, Atlanta, GA 30301</span></div>
+          <div class="footer-contact-item"><span class="ico">&#128222;</span><span>+1 (800) 555-CBRS</span></div>
+          <div class="footer-contact-item"><span class="ico">&#128140;</span><span>info@cbrsnetworks.com</span></div>
+          <div class="footer-contact-item"><span class="ico">&#128336;</span><span>Mon – Fri: 8 AM – 6 PM EST</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 CBRS Networks. All rights reserved.</span>
+        <span><a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8679;</button>
+  <script src="js/main.js"></script>
+  <script>
+    function handleContact(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      setTimeout(() => {
+        document.getElementById('successMsg').style.display = 'block';
+        e.target.reset();
+        btn.innerHTML = '&#128228; Send Message';
+        btn.disabled = false;
+        document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 1200);
+    }
+
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+</body>
+</html>
