@@ -12,6 +12,10 @@
 </head>
 <body>
 
+  <div id="pageLoader" class="page-loader"><div class="loader-logo">CBRS<span>.</span>Networks</div></div>
+  <div id="scrollProgress" class="scroll-progress"></div>
+  <div id="navOverlay" class="nav-overlay"></div>
+
   <!-- ===== NAVBAR ===== -->
   <nav class="navbar" id="navbar">
     <div class="container nav-inner">
@@ -24,6 +28,7 @@
         <li><a href="contact.html"  class="nav-link">Contact</a></li>
         <li><a href="contact.html"  class="btn-nav">Get Started</a></li>
       </ul>
+      <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode">🌙</button>
       <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
         <span></span><span></span><span></span>
       </div>
@@ -40,17 +45,17 @@
     <div class="hero-video-overlay"></div>
     <div class="container">
       <div class="hero-content">
-        <h1>We Connect <span>Great Talent</span><br>With Great Companies</h1>
+        <h1>We Connect <span id="typewriter">Great Talent</span><br>With Great Companies</h1>
         <p>CBRS Networks is a premier staffing and recruiting firm delivering top-tier professionals across IT, Healthcare, Finance, and Engineering — faster and smarter than anyone else.</p>
         <div class="hero-cta">
           <a href="jobs.html"    class="btn btn-primary">&#128269; Browse Open Jobs</a>
           <a href="contact.html" class="btn btn-outline">&#128222; Hire Talent</a>
         </div>
         <div class="hero-stats">
-          <div class="stat"><strong>5,000+</strong><span>Placements Made</span></div>
-          <div class="stat"><strong>98%</strong><span>Client Satisfaction</span></div>
-          <div class="stat"><strong>15+</strong><span>Industries Served</span></div>
-          <div class="stat"><strong>48hrs</strong><span>Avg. Response Time</span></div>
+          <div class="stat"><strong data-counter="5000">5,000+</strong><span>Placements Made</span></div>
+          <div class="stat"><strong data-counter="98">98%</strong><span>Client Satisfaction</span></div>
+          <div class="stat"><strong data-counter="15">15+</strong><span>Industries Served</span></div>
+          <div class="stat"><strong data-counter="48">48hrs</strong><span>Avg. Response Time</span></div>
         </div>
       </div>
     </div>
@@ -333,6 +338,7 @@
 
   <!-- Scroll to Top -->
   <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8679;</button>
+  <button class="mobile-cta" id="mobileCta">📞 Hire Talent</button>
 
   <script src="js/main.js"></script>
 </body>

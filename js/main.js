@@ -1,11 +1,338 @@
 /* ============================================================
-   CBRS Networks – main.js
-   Handles: Navbar scroll, mobile menu, scroll-to-top,
-            animated counters, intersection observer animations
+   CBRS Networks – main.js  (Advanced Edition)
+   Features:
+     • Page loader fade-out
+     • Scroll progress bar
+     • Animated hamburger ↔ X with side-drawer + overlay
+     • Swipe-to-close drawer (touch)
+     • Escape key closes drawer
+     • Dark mode toggle + localStorage persistence
+     • Typewriter effect (hero headline)
+     • Animated stat counters (Intersection Observer)
+     • Scroll-triggered fade-in animations
+     • Active nav link auto-highlight
+     • Smooth anchor scroll
+     • Floating mobile CTA
+     • Toast notification system
    ============================================================ */
 
 (function () {
   'use strict';
+
+  /* ═══════════════════════════════════════════════════════════
+     1. PAGE LOADER
+  ═══════════════════════════════════════════════════════════ */
+  const loader = document.getElementById('pageLoader');
+  if (loader) {
+    window.addEventListener('load', function () {
+      setTimeout(function () { loader.classList.add('hidden'); }, 300);
+    });
+    // Safety fallback
+    setTimeout(function () { if (loader) loader.classList.add('hidden'); }, 2500);
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     2. SCROLL PROGRESS BAR
+  ═══════════════════════════════════════════════════════════ */
+  const progressBar = document.getElementById('scrollProgress');
+  function updateProgress() {
+    if (!progressBar) return;
+    const scrolled  = window.scrollY;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (maxScroll > 0 ? (scrolled / maxScroll) * 100 : 0) + '%';
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     3. NAVBAR SCROLL BEHAVIOR
+  ═══════════════════════════════════════════════════════════ */
+  const navbar   = document.getElementById('navbar');
+  const scrollBtn = document.getElementById('scrollTop');
+
+  function handleScroll() {
+    const y = window.scrollY;
+    if (navbar) navbar.classList.toggle('scrolled', y > 50);
+    if (scrollBtn) scrollBtn.classList.toggle('show', y > 400);
+    updateProgress();
+  }
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+
+  /* ═══════════════════════════════════════════════════════════
+     4. ANIMATED HAMBURGER + SIDE DRAWER
+  ═══════════════════════════════════════════════════════════ */
+  const hamburger  = document.getElementById('hamburger');
+  const navLinks   = document.getElementById('navLinks');
+  const navOverlay = document.getElementById('navOverlay');
+  let drawerOpen   = false;
+
+  function openDrawer() {
+    drawerOpen = true;
+    if (hamburger)  hamburger.classList.add('open');
+    if (navLinks)   navLinks.classList.add('open');
+    if (navOverlay) {
+      navOverlay.classList.add('open');
+      requestAnimationFrame(function () { navOverlay.classList.add('visible'); });
+    }
+    document.body.style.overflow = 'hidden';
+    if (hamburger) hamburger.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeDrawer() {
+    drawerOpen = false;
+    if (hamburger)  hamburger.classList.remove('open');
+    if (navLinks)   navLinks.classList.remove('open');
+    if (navOverlay) {
+      navOverlay.classList.remove('visible');
+      setTimeout(function () { navOverlay.classList.remove('open'); }, 300);
+    }
+    document.body.style.overflow = '';
+    if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+  }
+
+  if (hamburger) {
+    hamburger.addEventListener('click', function () {
+      drawerOpen ? closeDrawer() : openDrawer();
+    });
+    hamburger.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); hamburger.click(); }
+    });
+  }
+
+  // Overlay click closes drawer
+  if (navOverlay) {
+    navOverlay.addEventListener('click', closeDrawer);
+  }
+
+  // Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && drawerOpen) closeDrawer();
+  });
+
+  // Close on nav link click
+  if (navLinks) {
+    navLinks.querySelectorAll('.nav-link, .btn-nav').forEach(function (link) {
+      link.addEventListener('click', closeDrawer);
+    });
+  }
+
+  // Touch swipe-right to close
+  let touchStartX = 0;
+  if (navLinks) {
+    navLinks.addEventListener('touchstart', function (e) {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    navLinks.addEventListener('touchend', function (e) {
+      if (e.changedTouches[0].clientX - touchStartX > 60) closeDrawer();
+    }, { passive: true });
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     5. SCROLL TO TOP
+  ═══════════════════════════════════════════════════════════ */
+  if (scrollBtn) {
+    scrollBtn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     6. DARK MODE TOGGLE
+  ═══════════════════════════════════════════════════════════ */
+  const darkToggles = document.querySelectorAll('.dark-toggle');
+  let darkMode = localStorage.getItem('cbrs-dark') === 'true';
+
+  function applyDark(on) {
+    document.body.classList.toggle('dark', on);
+    darkToggles.forEach(function (btn) { btn.textContent = on ? '☀️' : '🌙'; });
+    localStorage.setItem('cbrs-dark', on);
+  }
+
+  applyDark(darkMode);
+
+  darkToggles.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      darkMode = !darkMode;
+      applyDark(darkMode);
+      showToast(darkMode ? '🌙 Dark mode on' : '☀️ Light mode on', 'info');
+    });
+  });
+
+  /* ═══════════════════════════════════════════════════════════
+     7. TYPEWRITER EFFECT (hero h1)
+  ═══════════════════════════════════════════════════════════ */
+  const typeTarget = document.getElementById('typewriter');
+  if (typeTarget) {
+    const phrases = [
+      'Great Talent',
+      'Top Engineers',
+      'IT Professionals',
+      'Healthcare Heroes',
+      'Finance Experts'
+    ];
+    let pIdx = 0, cIdx = 0, deleting = false;
+
+    function type() {
+      const current = phrases[pIdx];
+      if (deleting) {
+        typeTarget.textContent = current.slice(0, --cIdx);
+      } else {
+        typeTarget.textContent = current.slice(0, ++cIdx);
+      }
+
+      let delay = deleting ? 55 : 90;
+
+      if (!deleting && cIdx === current.length) {
+        delay = 1800;
+        deleting = true;
+      } else if (deleting && cIdx === 0) {
+        deleting = false;
+        pIdx = (pIdx + 1) % phrases.length;
+        delay = 350;
+      }
+      setTimeout(type, delay);
+    }
+
+    // Start after loader fades
+    setTimeout(type, 800);
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     8. ANIMATED STAT COUNTERS
+  ═══════════════════════════════════════════════════════════ */
+  function animateCounter(el) {
+    const raw   = el.dataset.target || el.textContent;
+    const num   = parseFloat(raw.replace(/[^0-9.]/g, ''));
+    const suffix = raw.replace(/[0-9.]/g, '').replace('.', '');
+    const isFloat = raw.includes('.');
+    const steps = 70, stepTime = 1800 / steps;
+    let cur = 0;
+
+    const t = setInterval(function () {
+      cur += num / steps;
+      if (cur >= num) { cur = num; clearInterval(t); }
+      el.textContent = (isFloat ? cur.toFixed(1) : Math.floor(cur)) + suffix;
+    }, stepTime);
+  }
+
+  const counterEls = document.querySelectorAll('[data-counter]');
+  if (counterEls.length) {
+    const cObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          cObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.6 });
+    counterEls.forEach(function (el) { cObs.observe(el); });
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     9. SCROLL-TRIGGERED FADE-IN ANIMATIONS
+  ═══════════════════════════════════════════════════════════ */
+  const animatables = document.querySelectorAll(
+    '.service-card, .why-item, .process-step, .industry-card, ' +
+    '.testimonial-card, .value-card, .team-card, .office-card, ' +
+    '.job-card, .faq-item, .em-card, .stat'
+  );
+
+  animatables.forEach(function (el, i) {
+    el.style.opacity    = '0';
+    el.style.transform  = 'translateY(28px)';
+    el.style.transition = 'opacity .55s ease ' + (i % 4 * 0.07) + 's, transform .55s ease ' + (i % 4 * 0.07) + 's';
+  });
+
+  const fadeObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity   = '1';
+        entry.target.style.transform = 'translateY(0)';
+        fadeObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+  animatables.forEach(function (el) { fadeObs.observe(el); });
+
+  /* ═══════════════════════════════════════════════════════════
+     10. ACTIVE NAV LINK
+  ═══════════════════════════════════════════════════════════ */
+  (function () {
+    const page = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(function (link) {
+      const href = link.getAttribute('href');
+      link.classList.toggle('active', href === page || (page === '' && href === 'index.html'));
+    });
+  })();
+
+  /* ═══════════════════════════════════════════════════════════
+     11. SMOOTH ANCHOR SCROLL
+  ═══════════════════════════════════════════════════════════ */
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 90, behavior: 'smooth' });
+      }
+    });
+  });
+
+  /* ═══════════════════════════════════════════════════════════
+     12. TOAST NOTIFICATION SYSTEM
+  ═══════════════════════════════════════════════════════════ */
+  window.showToast = function (message, type, duration) {
+    type = type || 'info';
+    duration = duration || 3000;
+
+    let container = document.getElementById('toastContainer');
+    if (!container) {
+      container = document.createElement('div');
+      container.id = 'toastContainer';
+      container.className = 'toast-container';
+      document.body.appendChild(container);
+    }
+
+    const icons = { success: '✅', info: '💡', error: '❌', warning: '⚠️' };
+    const toast = document.createElement('div');
+    toast.className = 'toast ' + type;
+    toast.innerHTML = '<span class="toast-icon">' + (icons[type] || '💡') + '</span><span>' + message + '</span>';
+    container.appendChild(toast);
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { toast.classList.add('show'); });
+    });
+
+    setTimeout(function () {
+      toast.classList.add('hide');
+      toast.addEventListener('transitionend', function () { toast.remove(); }, { once: true });
+    }, duration);
+  };
+
+  /* ═══════════════════════════════════════════════════════════
+     13. WELCOME TOAST (home page only)
+  ═══════════════════════════════════════════════════════════ */
+  const isHome = (window.location.pathname.split('/').pop() || 'index.html') === 'index.html';
+  if (isHome && !sessionStorage.getItem('cbrs-welcomed')) {
+    setTimeout(function () {
+      showToast('👋 Welcome to CBRS Networks — your career starts here!', 'info', 4500);
+      sessionStorage.setItem('cbrs-welcomed', '1');
+    }, 2000);
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     14. FLOATING MOBILE CTA click
+  ═══════════════════════════════════════════════════════════ */
+  const mobileCta = document.getElementById('mobileCta');
+  if (mobileCta) {
+    mobileCta.addEventListener('click', function () {
+      window.location.href = 'contact.html';
+    });
+  }
+
+})();
+
 
   /* ── Navbar ──────────────────────────────────────────────── */
   const navbar    = document.getElementById('navbar');
