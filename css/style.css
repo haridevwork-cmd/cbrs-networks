@@ -191,7 +191,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .navbar.scrolled .nav-link { color: var(--text-dark); }
-.navbar.scrolled .logo-img { background: transparent; padding: 2px 0; }
+.navbar.scrolled .logo-img { background: #fff; padding: 4px 10px; }
 .navbar.scrolled .btn-nav { background: var(--accent); color: var(--white); }
 
 .nav-inner {
@@ -208,12 +208,15 @@ h1, h2, h3, h4, h5 {
   flex-shrink: 0;
 }
 .logo-img {
-  height: 50px;
+  height: 62px;
   width: auto;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.92);
-  padding: 5px 10px;
-  transition: background var(--transition), padding var(--transition);
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 6px 14px;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transition: box-shadow var(--transition);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
 }
 
 .nav-links {
