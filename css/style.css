@@ -137,9 +137,13 @@ h1, h2, h3, h4, h5 {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity .5s ease, visibility .5s ease;
+  /* Auto-dismiss after 1s purely via CSS — JS is just a speedup */
+  animation: loaderDismiss 0.4s ease 1s forwards;
 }
 .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+@keyframes loaderDismiss {
+  to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
 .loader-logo-img {
   height: 80px;
   width: auto;

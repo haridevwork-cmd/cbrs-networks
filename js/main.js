@@ -25,14 +25,12 @@
   const loader = document.getElementById('pageLoader');
   if (loader) {
     function hideLoader() { loader.classList.add('hidden'); }
-    // Use DOMContentLoaded — do NOT wait for video/images to finish downloading
+    // Hide as early as possible; CSS animation is the guaranteed fallback
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', function () { setTimeout(hideLoader, 400); });
+      document.addEventListener('DOMContentLoaded', hideLoader);
     } else {
-      setTimeout(hideLoader, 400);
+      hideLoader();
     }
-    // Absolute hard fallback — hide no matter what after 1s
-    setTimeout(hideLoader, 1000);
   }
 
   /* ═══════════════════════════════════════════════════════════
