@@ -1,55 +1,59 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 420">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 120">
   <!--
     CBRS NeutralHost Services LLC – Logo
-    Icon center: (192, 200) | Arcs open ±25° from east | Transparent background
+    Compact horizontal layout (640×120 viewBox).
+    Designed with dark colours so CSS filter:brightness(0)invert(1)
+    renders a clean white logo on dark navbar/footer,
+    while filter:none shows the original branded colours on white backgrounds.
+    Icon centre: (55, 60)  |  Arc opening: ±25° on right side
   -->
 
-  <!-- ── Outer arc: dark navy-blue ── -->
-  <path d="M 309.8,254.9 A 130,130 0 1,1 309.8,145.1"
-        fill="none" stroke="#0d2b5e" stroke-width="10" stroke-linecap="round"/>
+  <!-- ── Outer arc r=46 (deep navy) ── -->
+  <path d="M 96.69,79.44 A 46,46 0 1,1 96.69,40.56"
+        fill="none" stroke="#0d3b8c" stroke-width="4.5" stroke-linecap="round"/>
 
-  <!-- ── 2nd arc: medium blue ── -->
-  <path d="M 279,240.6 A 96,96 0 1,1 279,159.4"
-        fill="none" stroke="#1a56c4" stroke-width="9" stroke-linecap="round"/>
+  <!-- ── Mid arc r=34 (medium blue) ── -->
+  <path d="M 85.81,74.37 A 34,34 0 1,1 85.81,45.63"
+        fill="none" stroke="#1d5cb8" stroke-width="3.8" stroke-linecap="round"/>
 
-  <!-- ── 3rd arc: bright blue ── -->
-  <path d="M 253.6,228.7 A 68,68 0 1,1 253.6,171.3"
-        fill="none" stroke="#3b9ddd" stroke-width="8" stroke-linecap="round"/>
+  <!-- ── Inner arc r=23 (bright blue) ── -->
+  <path d="M 75.84,69.72 A 23,23 0 1,1 75.84,50.28"
+        fill="none" stroke="#2e84d8" stroke-width="3.2" stroke-linecap="round"/>
 
-  <!-- ── Cyan C-accent: right-side semicircle ── -->
-  <path d="M 192,160 A 40,40 0 0,1 192,240"
-        fill="none" stroke="#00c8e0" stroke-width="16" stroke-linecap="round"/>
+  <!-- ── Teal C-accent: right-half semicircle r=14 ── -->
+  <path d="M 55,46 A 14,14 0 0,1 55,74"
+        fill="none" stroke="#14a8c0" stroke-width="6.5" stroke-linecap="round"/>
 
-  <!-- ── Antenna head (cyan circle) ── -->
-  <circle cx="192" cy="165" r="10" fill="#00c8e0"/>
+  <!-- ── Antenna head dot ── -->
+  <circle cx="55" cy="46" r="4" fill="#14a8c0"/>
 
-  <!-- ── Antenna body: A-frame ── -->
-  <line x1="192" y1="175" x2="162" y2="238"
-        stroke="#0d2b5e" stroke-width="8.5" stroke-linecap="round"/>
-  <line x1="192" y1="175" x2="222" y2="238"
-        stroke="#0d2b5e" stroke-width="8.5" stroke-linecap="round"/>
+  <!-- ── Antenna A-frame ── -->
+  <line x1="55" y1="50" x2="40" y2="78"
+        stroke="#0d3b8c" stroke-width="3.2" stroke-linecap="round"/>
+  <line x1="55" y1="50" x2="70" y2="78"
+        stroke="#0d3b8c" stroke-width="3.2" stroke-linecap="round"/>
 
   <!-- ── Crossbar ── -->
-  <line x1="175" y1="210" x2="209" y2="210"
-        stroke="#0d2b5e" stroke-width="7" stroke-linecap="round"/>
+  <line x1="44" y1="66" x2="66" y2="66"
+        stroke="#0d3b8c" stroke-width="2.8" stroke-linecap="round"/>
 
-  <!-- ═══════════ TEXT ═══════════ -->
+  <!-- ══════════ TEXT ══════════ -->
 
-  <!-- CBRS: large bold dark navy -->
-  <text x="383" y="220"
-        font-family="'Arial Black', 'Franklin Gothic Heavy', Impact, Arial, sans-serif"
-        font-size="160" font-weight="900"
-        fill="#1a2d5c" letter-spacing="-1">CBRS</text>
+  <!-- CBRS – large bold -->
+  <text x="115" y="76"
+        font-family="'Arial Black','Franklin Gothic Heavy',Impact,Arial,sans-serif"
+        font-size="62" font-weight="900"
+        fill="#0d2952">CBRS</text>
 
-  <!-- NeutralHost Services LLC: medium blue -->
-  <text x="392" y="290"
-        font-family="Arial, Helvetica, sans-serif"
-        font-size="68" font-weight="700"
-        fill="#2d7ec3">NeutralHost Services LLC</text>
+  <!-- NeutralHost Services LLC -->
+  <text x="122" y="95"
+        font-family="Arial,Helvetica,sans-serif"
+        font-size="24" font-weight="700"
+        fill="#1a4db8">NeutralHost Services LLC</text>
 
-  <!-- Tagline: letter-spaced gray -->
-  <text x="395" y="355"
-        font-family="Arial, Helvetica, sans-serif"
-        font-size="40" font-weight="500"
-        fill="#5a7fa8" letter-spacing="6">CONNECTING INNOVATION</text>
+  <!-- Tagline -->
+  <text x="124" y="112"
+        font-family="Arial,Helvetica,sans-serif"
+        font-size="13.5" font-weight="500"
+        fill="#4a6d90" letter-spacing="3.8">CONNECTING INNOVATION</text>
 </svg>
