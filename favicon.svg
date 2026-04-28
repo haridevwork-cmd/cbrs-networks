@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="32" fill="#0d2952"/>
+
+  <!-- Outer arc -->
+  <path d="M 55.8,43.6 A 26,26 0 1,1 55.8,20.4"
+        fill="none" stroke="#3b9ddd" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Mid arc -->
+  <path d="M 49.6,40.2 A 19,19 0 1,1 49.6,23.8"
+        fill="none" stroke="#1a56c4" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Inner arc -->
+  <path d="M 44.2,37.4 A 13,13 0 1,1 44.2,26.6"
+        fill="none" stroke="#2e84d8" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Teal C-accent -->
+  <path d="M 32,24 A 8,8 0 0,1 32,40"
+        fill="none" stroke="#14a8c0" stroke-width="4.5" stroke-linecap="round"/>
+
+  <!-- Antenna dot -->
+  <circle cx="32" cy="24" r="2.8" fill="#14a8c0"/>
+
+  <!-- A-frame legs -->
+  <line x1="32" y1="27" x2="22" y2="46" stroke="white" stroke-width="2.8" stroke-linecap="round"/>
+  <line x1="32" y1="27" x2="42" y2="46" stroke="white" stroke-width="2.8" stroke-linecap="round"/>
+
+  <!-- Crossbar -->
+  <line x1="25" y1="38" x2="39" y2="38" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
