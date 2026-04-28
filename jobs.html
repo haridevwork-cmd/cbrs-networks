@@ -207,7 +207,7 @@
         <li><a href="contact.html"  class="nav-link">Contact</a></li>
         <li><a href="contact.html"  class="btn-nav">Get Started</a></li>
       </ul>
-      <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode">🌙</button>
+      <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"/></svg></button>
       <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
         <span></span><span></span><span></span>
       </div>
@@ -231,19 +231,19 @@
 
       <!-- Search Bar -->
       <div class="search-bar">
-        <input type="text" id="jobSearch" placeholder="&#128269;  Job title, keyword, or company..." aria-label="Search jobs" />
-        <input type="text" placeholder="&#128205;  Location or Remote..." style="flex:.6;min-width:160px;padding:13px 20px;border:1.5px solid var(--border);border-radius:50px;font-size:.95rem;font-family:inherit;outline:none;" />
+        <input type="text" id="jobSearch" placeholder="Job title, keyword, or company..." aria-label="Search jobs" />
+        <input type="text" placeholder="Location or Remote..." style="flex:.6;min-width:160px;padding:13px 20px;border:1.5px solid var(--border);border-radius:50px;font-size:.95rem;font-family:inherit;outline:none;" />
         <button type="button" onclick="filterJobs()">Search Jobs</button>
       </div>
 
       <!-- Filter Tabs -->
       <div class="jobs-filter" id="filterTabs">
         <button class="filter-btn active" onclick="filterByCategory(this,'all')">All Categories</button>
-        <button class="filter-btn" onclick="filterByCategory(this,'it')">&#128187; IT &amp; Tech</button>
-        <button class="filter-btn" onclick="filterByCategory(this,'healthcare')">&#127973; Healthcare</button>
-        <button class="filter-btn" onclick="filterByCategory(this,'finance')">&#128200; Finance</button>
-        <button class="filter-btn" onclick="filterByCategory(this,'engineering')">&#9881; Engineering</button>
-        <button class="filter-btn" onclick="filterByCategory(this,'executive')">&#128101; Executive</button>
+        <button class="filter-btn" onclick="filterByCategory(this,'it')">IT &amp; Tech</button>
+        <button class="filter-btn" onclick="filterByCategory(this,'healthcare')">Healthcare</button>
+        <button class="filter-btn" onclick="filterByCategory(this,'finance')">Finance</button>
+        <button class="filter-btn" onclick="filterByCategory(this,'engineering')">Engineering</button>
+        <button class="filter-btn" onclick="filterByCategory(this,'executive')">Executive</button>
       </div>
 
       <div class="jobs-layout">
@@ -277,7 +277,7 @@
             <label class="sidebar-check"><input type="checkbox" checked /> $100K – $150K</label>
             <label class="sidebar-check"><input type="checkbox" /> $150K+</label>
           </div>
-          <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px;">&#128100; Submit Your Resume</a>
+          <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px;">Submit Your Resume</a>
         </aside>
 
         <!-- Job Listings -->
@@ -289,13 +289,12 @@
             <!-- Job 1 -->
             <div class="job-card job-featured" data-category="it">
               <div class="job-info">
-                <div class="featured-badge">&#11088; Featured</div>
-                <h3>Senior Full Stack Engineer</h3>
+                <div class="featured-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="12" height="12" style="margin-right:3px"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd"/></svg> Featured</div>
                 <div class="job-meta">
-                  <span class="job-tag">&#128205; Atlanta, GA (Remote)</span>
+                <span class="job-tag">Atlanta, GA (Remote)</span>
                   <span class="job-tag type">Full-Time</span>
                   <span class="job-tag salary">$130K – $160K</span>
-                  <span class="job-tag">&#128188; TechCorp Inc.</span>
+                  <span class="job-tag">TechCorp Inc.</span>
                 </div>
               </div>
               <button class="job-apply-btn" onclick="openApplyModal('Senior Full Stack Engineer')">Apply Now</button>
@@ -306,10 +305,10 @@
               <div class="job-info">
                 <h3>Registered Nurse – ICU</h3>
                 <div class="job-meta">
-                  <span class="job-tag">&#128205; Nashville, TN</span>
+                  <span class="job-tag">Nashville, TN</span>
                   <span class="job-tag type">Contract</span>
                   <span class="job-tag salary">$85 – $95/hr</span>
-                  <span class="job-tag">&#128188; HealthFirst Network</span>
+                  <span class="job-tag">HealthFirst Network</span>
                 </div>
               </div>
               <button class="job-apply-btn" onclick="openApplyModal('Registered Nurse – ICU')">Apply Now</button>
@@ -320,10 +319,10 @@
               <div class="job-info">
                 <h3>Senior Financial Analyst</h3>
                 <div class="job-meta">
-                  <span class="job-tag">&#128205; New York, NY (Hybrid)</span>
+                  <span class="job-tag">New York, NY (Hybrid)</span>
                   <span class="job-tag type">Full-Time</span>
                   <span class="job-tag salary">$110K – $135K</span>
-                  <span class="job-tag">&#128188; Nexus Financial</span>
+                  <span class="job-tag">Nexus Financial</span>
                 </div>
               </div>
               <button class="job-apply-btn" onclick="openApplyModal('Senior Financial Analyst')">Apply Now</button>
@@ -332,13 +331,12 @@
             <!-- Job 4 -->
             <div class="job-card job-featured" data-category="it">
               <div class="job-info">
-                <div class="featured-badge">&#11088; Featured</div>
-                <h3>Cloud Solutions Architect (AWS)</h3>
+                <div class="featured-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="12" height="12" style="margin-right:3px"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd"/></svg> Featured</div>
                 <div class="job-meta">
-                  <span class="job-tag">&#128205; Remote – USA</span>
+                  <span class="job-tag">Remote – USA</span>
                   <span class="job-tag type">Contract-to-Hire</span>
                   <span class="job-tag salary">$140K – $175K</span>
-                  <span class="job-tag">&#128188; Meridian Systems</span>
+                  <span class="job-tag">Meridian Systems</span>
                 </div>
               </div>
               <button class="job-apply-btn" onclick="openApplyModal('Cloud Solutions Architect (AWS)')">Apply Now</button>
@@ -349,10 +347,10 @@
               <div class="job-info">
                 <h3>Civil Engineer – Transportation</h3>
                 <div class="job-meta">
-                  <span class="job-tag">&#128205; Dallas, TX</span>
+                  <span class="job-tag">Dallas, TX</span>
                   <span class="job-tag type">Full-Time</span>
                   <span class="job-tag salary">$90K – $115K</span>
-                  <span class="job-tag">&#128188; BuildRight Group</span>
+                  <span class="job-tag">BuildRight Group</span>
                 </div>
               </div>
               <button class="job-apply-btn" onclick="openApplyModal('Civil Engineer – Transportation')">Apply Now</button>
@@ -363,10 +361,10 @@
               <div class="job-info">
                 <h3>Cybersecurity Engineer</h3>
                 <div class="job-meta">
-                  <span class="job-tag">&#128205; Chicago, IL (Hybrid)</span>
+                  <span class="job-tag">Chicago, IL (Hybrid)</span>
                   <span class="job-tag type">Full-Time</span>
                   <span class="job-tag salary">$125K – $155K</span>
-                  <span class="job-tag">&#128188; SecureNet Corp</span>
+                  <span class="job-tag">SecureNet Corp</span>
                 </div>
               </div>
               <button class="job-apply-btn" onclick="openApplyModal('Cybersecurity Engineer')">Apply Now</button>
@@ -377,10 +375,10 @@
               <div class="job-info">
                 <h3>Physical Therapist (PT)</h3>
                 <div class="job-meta">
-                  <span class="job-tag">&#128205; Phoenix, AZ</span>
+                  <span class="job-tag">Phoenix, AZ</span>
                   <span class="job-tag type">Contract</span>
                   <span class="job-tag salary">$72 – $85/hr</span>
-                  <span class="job-tag">&#128188; SunHealth Rehab</span>
+                  <span class="job-tag">SunHealth Rehab</span>
                 </div>
               </div>
               <button class="job-apply-btn" onclick="openApplyModal('Physical Therapist (PT)')">Apply Now</button>
@@ -391,10 +389,10 @@
               <div class="job-info">
                 <h3>Chief Technology Officer (CTO)</h3>
                 <div class="job-meta">
-                  <span class="job-tag">&#128205; San Francisco, CA</span>
+                  <span class="job-tag">San Francisco, CA</span>
                   <span class="job-tag type">Full-Time</span>
                   <span class="job-tag salary">$250K – $320K + Equity</span>
-                  <span class="job-tag">&#128188; FinovaTech Startup</span>
+                  <span class="job-tag">FinovaTech Startup</span>
                 </div>
               </div>
               <button class="job-apply-btn" onclick="openApplyModal('Chief Technology Officer (CTO)')">Apply Now</button>
@@ -405,10 +403,10 @@
               <div class="job-info">
                 <h3>Data Engineer – Python/Spark</h3>
                 <div class="job-meta">
-                  <span class="job-tag">&#128205; Remote – USA</span>
+                  <span class="job-tag">Remote – USA</span>
                   <span class="job-tag type">Contract</span>
                   <span class="job-tag salary">$85 – $105/hr</span>
-                  <span class="job-tag">&#128188; DataFlow Analytics</span>
+                  <span class="job-tag">DataFlow Analytics</span>
                 </div>
               </div>
               <button class="job-apply-btn" onclick="openApplyModal('Data Engineer – Python/Spark')">Apply Now</button>
@@ -419,10 +417,10 @@
               <div class="job-info">
                 <h3>Controller – Real Estate</h3>
                 <div class="job-meta">
-                  <span class="job-tag">&#128205; Miami, FL</span>
+                  <span class="job-tag">Miami, FL</span>
                   <span class="job-tag type">Full-Time</span>
                   <span class="job-tag salary">$120K – $145K</span>
-                  <span class="job-tag">&#128188; Pinnacle Properties</span>
+                  <span class="job-tag">Pinnacle Properties</span>
                 </div>
               </div>
               <button class="job-apply-btn" onclick="openApplyModal('Controller – Real Estate')">Apply Now</button>
@@ -433,10 +431,10 @@
               <div class="job-info">
                 <h3>Mechanical Engineer – Aerospace</h3>
                 <div class="job-meta">
-                  <span class="job-tag">&#128205; Huntsville, AL</span>
+                  <span class="job-tag">Huntsville, AL</span>
                   <span class="job-tag type">Full-Time</span>
                   <span class="job-tag salary">$105K – $130K</span>
-                  <span class="job-tag">&#128188; AeroTech Defense</span>
+                  <span class="job-tag">AeroTech Defense</span>
                 </div>
               </div>
               <button class="job-apply-btn" onclick="openApplyModal('Mechanical Engineer – Aerospace')">Apply Now</button>
@@ -447,10 +445,10 @@
               <div class="job-info">
                 <h3>Epic EHR Implementation Consultant</h3>
                 <div class="job-meta">
-                  <span class="job-tag">&#128205; Remote – USA</span>
+                  <span class="job-tag">Remote – USA</span>
                   <span class="job-tag type">Contract</span>
                   <span class="job-tag salary">$95 – $120/hr</span>
-                  <span class="job-tag">&#128188; Regional Health System</span>
+                  <span class="job-tag">Regional Health System</span>
                 </div>
               </div>
               <button class="job-apply-btn" onclick="openApplyModal('Epic EHR Implementation Consultant')">Apply Now</button>
@@ -476,8 +474,8 @@
       <h2>Don't See the Right Role Yet?</h2>
       <p>Submit your resume and our recruiting team will proactively match you with opportunities as they become available.</p>
       <div class="cta-banner-btns">
-        <a href="contact.html" class="btn btn-primary">&#128100; Submit Your Resume</a>
-        <a href="contact.html" class="btn btn-outline">&#128222; Talk to a Recruiter</a>
+        <a href="contact.html" class="btn btn-primary">Submit Your Resume</a>
+        <a href="contact.html" class="btn btn-outline">Talk to a Recruiter</a>
       </div>
     </div>
   </section>
@@ -493,7 +491,7 @@
             <a href="#" class="social-link" aria-label="LinkedIn">in</a>
             <a href="#" class="social-link" aria-label="Twitter">&#120143;</a>
             <a href="#" class="social-link" aria-label="Facebook">f</a>
-            <a href="#" class="social-link" aria-label="Instagram">&#128247;</a>
+            <a href="#" class="social-link" aria-label="Instagram">ig</a>
           </div>
         </div>
         <div class="footer-col">
@@ -519,10 +517,10 @@
         </div>
         <div class="footer-col">
           <h4>Contact Us</h4>
-          <div class="footer-contact-item"><span class="ico">&#128205;</span><span>Green Mountain Ter,<br>Aldie, VA 20105-5529, USA</span></div>
-          <div class="footer-contact-item"><span class="ico">&#128222;</span><span>+1 (940) 358-2918</span></div>
-          <div class="footer-contact-item"><span class="ico">&#128140;</span><span>john@cbrsn.com</span></div>
-          <div class="footer-contact-item"><span class="ico">&#128336;</span><span>Mon – Fri: 8 AM – 6 PM EST</span></div>
+          <div class="footer-contact-item"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg></span><span>Green Mountain Ter,<br>Aldie, VA 20105-5529, USA</span></div>
+          <div class="footer-contact-item"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg></span><span>+1 (940) 358-2918</span></div>
+          <div class="footer-contact-item"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg></span><span>john@cbrsn.com</span></div>
+          <div class="footer-contact-item"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg></span><span>Mon – Fri: 8 AM – 6 PM EST</span></div>
         </div>
       </div>
       <div class="footer-bottom">
@@ -571,7 +569,7 @@
   </div>
 
   <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8679;</button>
-  <button class="mobile-cta" id="mobileCta">📞 Hire Talent</button>
+  <button class="mobile-cta" id="mobileCta">Hire Talent</button>
   <script src="js/main.js"></script>
   <script>
     function filterByCategory(btn, category) {
