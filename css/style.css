@@ -180,8 +180,8 @@ h1, h2, h3, h4, h5 {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 999;
-  /* Dark gradient fades behind navbar so logo always readable over video */
-  background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.0) 100%);
+  background: rgba(255,255,255,0.97);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.08);
   transition: background var(--transition), box-shadow var(--transition);
   padding: 0;
 }
@@ -210,28 +210,20 @@ h1, h2, h3, h4, h5 {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  animation: logoFadeIn 0.8s ease forwards;
-  /* Frosted white pill so coloured logo stays readable on dark hero navbar */
-  background: rgba(255,255,255,0.92);
-  border-radius: 10px;
-  padding: 5px 14px 5px 10px;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  transition: background var(--transition);
+  animation: logoFadeIn 0.6s ease forwards;
+  /* No pill — navbar is always white so logo shows in true colors */
+  background: none;
+  padding: 0;
 }
 @keyframes logoFadeIn {
   from { opacity: 0; transform: translateX(-16px); }
   to   { opacity: 1; transform: translateX(0); }
 }
 .logo-img {
-  height: 64px;
+  height: 58px;
   width: auto;
-  max-width: 280px;
+  max-width: 320px;
   background: transparent;
-  border-radius: 0;
-  padding: 0;
-  box-shadow: none;
-  /* No filter — always show true brand colours */
   filter: none;
   transition: height var(--transition), opacity var(--transition);
 }
@@ -246,7 +238,7 @@ h1, h2, h3, h4, h5 {
 .nav-link {
   font-size: .93rem;
   font-weight: 500;
-  color: rgba(255,255,255,.9);
+  color: var(--text-dark);
   position: relative;
   transition: color var(--transition);
 }
