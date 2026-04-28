@@ -193,7 +193,6 @@ h1, h2, h3, h4, h5 {
 
 .navbar.scrolled .nav-link { color: var(--text-dark); }
 .navbar.scrolled .logo-img {
-  /* On white navbar: restore original colors, just a subtle shadow */
   filter: none;
   height: 52px;
 }
@@ -212,6 +211,13 @@ h1, h2, h3, h4, h5 {
   align-items: center;
   flex-shrink: 0;
   animation: logoFadeIn 0.8s ease forwards;
+  /* Frosted white pill so coloured logo stays readable on dark hero navbar */
+  background: rgba(255,255,255,0.92);
+  border-radius: 10px;
+  padding: 5px 14px 5px 10px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background var(--transition);
 }
 @keyframes logoFadeIn {
   from { opacity: 0; transform: translateX(-16px); }
@@ -220,16 +226,14 @@ h1, h2, h3, h4, h5 {
 .logo-img {
   height: 64px;
   width: auto;
-  max-width: 260px;
+  max-width: 280px;
   background: transparent;
   border-radius: 0;
   padding: 0;
   box-shadow: none;
-  /* Turn all logo colours → black → white for clean white logo on dark navbar */
-  filter:
-    brightness(0) invert(1)
-    drop-shadow(0 1px 8px rgba(0,0,0,0.6));
-  transition: filter var(--transition), height var(--transition), opacity var(--transition);
+  /* No filter — always show true brand colours */
+  filter: none;
+  transition: height var(--transition), opacity var(--transition);
 }
 .logo-img:hover { opacity: 0.85; }
 
@@ -929,11 +933,14 @@ body.dark .hamburger span { background: #f1f5f9; }
   margin-bottom: 14px;
 }
 .footer-brand .logo img {
-  height: 44px;
+  height: 50px;
   width: auto;
-  border-radius: 6px;
-  /* Make logo white on dark footer */
-  filter: brightness(0) invert(1);
+  border-radius: 0;
+  /* No filter — true brand colours on footer too */
+  filter: none;
+  background: rgba(255,255,255,0.92);
+  border-radius: 8px;
+  padding: 4px 10px;
 }
 
 .footer-brand p {
