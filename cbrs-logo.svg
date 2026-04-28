@@ -6,32 +6,32 @@
 
   <!-- ── Outer arc: dark navy-blue ── -->
   <path d="M 309.8,254.9 A 130,130 0 1,1 309.8,145.1"
-        fill="none" stroke="#1349a8" stroke-width="10" stroke-linecap="round"/>
+        fill="none" stroke="#0d2b5e" stroke-width="10" stroke-linecap="round"/>
 
   <!-- ── 2nd arc: medium blue ── -->
   <path d="M 279,240.6 A 96,96 0 1,1 279,159.4"
-        fill="none" stroke="#1b5fd2" stroke-width="9" stroke-linecap="round"/>
+        fill="none" stroke="#1a56c4" stroke-width="9" stroke-linecap="round"/>
 
   <!-- ── 3rd arc: bright blue ── -->
   <path d="M 253.6,228.7 A 68,68 0 1,1 253.6,171.3"
-        fill="none" stroke="#2d8de0" stroke-width="8" stroke-linecap="round"/>
+        fill="none" stroke="#3b9ddd" stroke-width="8" stroke-linecap="round"/>
 
-  <!-- ── Teal C-accent: right-side semicircle ── -->
+  <!-- ── Cyan C-accent: right-side semicircle ── -->
   <path d="M 192,160 A 40,40 0 0,1 192,240"
-        fill="none" stroke="#4eccd8" stroke-width="16" stroke-linecap="round"/>
+        fill="none" stroke="#00c8e0" stroke-width="16" stroke-linecap="round"/>
 
-  <!-- ── Antenna head (teal circle) ── -->
-  <circle cx="192" cy="165" r="10" fill="#4eccd8"/>
+  <!-- ── Antenna head (cyan circle) ── -->
+  <circle cx="192" cy="165" r="10" fill="#00c8e0"/>
 
   <!-- ── Antenna body: A-frame ── -->
   <line x1="192" y1="175" x2="162" y2="238"
-        stroke="#1a3d80" stroke-width="8.5" stroke-linecap="round"/>
+        stroke="#0d2b5e" stroke-width="8.5" stroke-linecap="round"/>
   <line x1="192" y1="175" x2="222" y2="238"
-        stroke="#1a3d80" stroke-width="8.5" stroke-linecap="round"/>
+        stroke="#0d2b5e" stroke-width="8.5" stroke-linecap="round"/>
 
   <!-- ── Crossbar ── -->
   <line x1="175" y1="210" x2="209" y2="210"
-        stroke="#1a3d80" stroke-width="7" stroke-linecap="round"/>
+        stroke="#0d2b5e" stroke-width="7" stroke-linecap="round"/>
 
   <!-- ═══════════ TEXT ═══════════ -->
 
@@ -48,8 +48,8 @@
         fill="#2d7ec3">NeutralHost Services LLC</text>
 
   <!-- Tagline: letter-spaced gray -->
-  <text x="395" y="345"
+  <text x="395" y="355"
         font-family="Arial, Helvetica, sans-serif"
-        font-size="28" font-weight="400"
-        fill="#7a8fa8" letter-spacing="5">CONNECTING INNOVATION</text>
+        font-size="40" font-weight="500"
+        fill="#5a7fa8" letter-spacing="6">CONNECTING INNOVATION</text>
 </svg>
